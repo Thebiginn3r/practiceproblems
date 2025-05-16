@@ -22,12 +22,18 @@ public class GroceryArrayPractice {
         System.out.print("\nEnter item you would like to remove: ");
         String itemremove = scanner.nextLine();
 
-        if(groceries.contains(itemremove)){
-            groceries.remove(itemremove);
-            System.out.println(itemremove + " removed");
-        } else {
-            System.out.println("Item not found on the list");
+        boolean found = false;
+        for (int i = 0; i < groceries.size(); i++) {
+            if(groceries.get(i).equalsIgnoreCase(itemremove)){
+                groceries.remove(i);
+                found = true;
+                System.out.println(itemremove.toLowerCase() + " removed");
+                break;
+            }
         }
+       if (!found){
+               System.out.println("Item not found on the list");
+       }
 
         System.out.println("\nUpdated list: ");
         for (String item : groceries){
